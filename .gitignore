@@ -7,3 +7,7 @@ __pycache__/
 
 # Ignore environment variables
 .env
+
+# IDE-specific files
+.vscode/
+.idea/
