@@ -5,10 +5,17 @@ __pycache__/
 # Ignore log files
 *.log
 
-# Ignore environment variables 
+# Ignore environment variables
+.venv/
 venv/
 .env
 
 # IDE-specific files
 .vscode/
 .idea/
+
+# Output file
+tasks.json
+
+# Not meant to be in the project
+Unused/

@@ -1,9 +1,23 @@
+# add description to tell other that this is for testing only not to be used by them
+
 import subprocess
 import sys
 
-while True:
-    task = input("> ")
-    if task != "q":
-        result = subprocess.run(f'python main.py {task}', shell=True, text=True)
-    else:
+
+def main():
+    while True:
+        try:
+            task = input("> ")
+            if task != "q":
+                subprocess.run(f'py main.py {task}', shell=True, text=True)
+            else:
+                sys.exit()
+        except KeyboardInterrupt:
+            sys.exit()
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
         sys.exit()
