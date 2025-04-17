@@ -62,6 +62,59 @@ Example task record:
 ```
 
 ## Contributing
+Thank you for considering contributing to **CLI Task Tracker**! Your contributions help improve and expand the project, making it more useful for everyone.
+
+### How to Contribute
+
+1. **Fork the Repository:**  
+   Click the **Fork** button at the top right of the repository page to create your own copy.
+
+2. **Clone Your Fork:**  
+   ``` bash
+   git clone https://github.com/yourusername/cli-task-tracker.git
+   cd cli-task-tracker
+   ```
+
+3. **Create a New Branch:**
+   ``` bash
+   git checkout -b feature/your-feature-name
+   ```
+
+   When making your changes:
+   - Ensure your code follows the project’s style.
+   - Write clear, concise commit messages.
+   - Update documentation **if** needed.
+
+4. **Commit Your Changes**:
+
+``` bash
+git commit -am "Add [feature/bug fix]: Brief description of changes"
+``` 
+Push Your Branch:
+
+bash
+git push origin feature/your-feature-name
+Open a Pull Request (PR):
+
+Navigate to the original repository on GitHub.
+
+Open a new PR and describe your changes in detail.
+
+Link to any related issues and explain why your contribution is valuable.
+
+Code Style and Standards
+
+
 ## License
+This project is licensed under the **MIT License** – a permissive open-source license that allows users to freely use,
+modify, and distribute the software with minimal restrictions.
+
+### Key Terms:
+- You can use, modify, and distribute this software for **any** purpose.
+- Attribution is **required** – you must include the original copyright notice.
+- The software is provided **as-is**, without warranty of any kind.
+
+For the full license text, see the [LICENSE](LICENSE) file in this repository.
+
 ## Contact
 For any questions, issues, or feedback, don't hesitate to open an issue on GitHub or email me at hmdoonwork71@gmail.com.
