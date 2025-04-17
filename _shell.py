@@ -1,4 +1,5 @@
-# add description to tell other that this is for testing only not to be used by them
+"""This script is wrote for testing purposes only and not meant to be used by others.
+Commands must be written directly without writing "python cli_task_tracker.py" or "task-tracker". """
 
 import subprocess
 import sys
@@ -9,7 +10,7 @@ def main():
         try:
             task = input("> ")
             if task != "q":
-                subprocess.run(f'py main.py {task}', shell=True, text=True)
+                subprocess.run(f'py cli_task_tracker.py {task}', shell=True, text=True)
             else:
                 sys.exit()
         except KeyboardInterrupt:
