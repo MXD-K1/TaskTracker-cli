@@ -3,18 +3,12 @@
 import json
 import sys
 from typing import Dict
-
 import datetime
-
-
-# fix bugs
-# help is not tested yet
 
 
 def main():
     json_file = "tasks.json"
     args, do = extract_args()
-    print(args)
 
     # perform the task
     execute_command(args, do, json_file)
@@ -38,7 +32,7 @@ def extract_args():  # Needs refactoring
                 args["args"] = [task]
             elif len(raw_args) == 4:
                 task_id_or_task = raw_args[1]
-                args["args"] = [task_id_or_task]
+                args["args"] = [int(task_id_or_task) if task_id_or_task.isdigit() else task_id_or_task]
                 if "-d" == raw_args[2]:
                     description = raw_args[3]
                     args["args"].append(description)
@@ -197,29 +191,27 @@ def extract_args():  # Needs refactoring
 def execute_command(args, do, json_file):
     data = get_data(json_file)
     task_id = get_id(data)
-    if args["command"] == "add":
-        if do:
+    if do:
+        if args["command"] == "add":
             if len(args["args"]) == 1:
-                add_task(args["args"][0], task_id, data,  json_file)
+                add_task(args["args"][0], task_id, data, json_file)
             else:
-                add_description(1, data, 11, json_file)
-    elif args["command"] == "delete":
-        if do:
+                if isinstance(args["args"][0], int):
+                    add_description(args["args"][1], args["args"][0], data, json_file)
+                else:  # It will be a str
+                    add_task(args["args"][0], task_id, data, json_file)
+                    add_description(args["args"][1], task_id, data, json_file)
+        elif args["command"] == "delete":
             delete_task(args["args"][0], data, json_file)
-    elif args["command"] == "update":
-        if do:
+        elif args["command"] == "update":
             update_task(args["args"][0], args["args"][1], data, json_file)
-    elif args["command"] == "list":
-        if do:
+        elif args["command"] == "list":
             list_tasks(data, args["args"][0])
-    elif args["command"] == "mark":
-        if do:
+        elif args["command"] == "mark":
             mark_task(data, args["args"][0], args["args"][1], json_file)
-    else:
-        pass
-        # No need to do anything, because extract_args reports error and ignore the invalid command
-
-    # then (8) add the rest of the features from roadmap like adding time ...
+        else:
+            pass
+            # No need to do anything, because extract_args reports error and ignore the invalid command
 
 
 def get_data(json_file):
@@ -256,12 +248,13 @@ def add_task(item, task_id, data, json_file):
 
 def add_description(description, task_id, data, json_file):
     if data.get(f"t{task_id}", None) is not None:
-        data[f"t{task_id}"]["updateAt"] = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+        data[f"t{task_id}"]["UpdatedAt"] = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
         data[f"t{task_id}"]["description"] = description
         write_to_json(json_file, data)
         print(f"Successfully added description for {data[f"t{task_id}"]["task"]} (ID: {task_id})")
     else:
-        report_error()
+        report_error(f"No task is associated with the ID {task_id}.", "ID")
+
 
 def delete_task(task_id, data, json_file):
     try:

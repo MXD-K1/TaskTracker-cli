@@ -1,6 +1,8 @@
 # CLI Task Tracker
 
-CLI Task Tracker is a simple yet powerful command-line application designed to help you manage your tasks directly from your terminal. Built entirely in Python, the project uses only built-in modules (`json`, `sys`, and `datetime`), ensuring a lightweight solution with no external dependencies.
+CLI Task Tracker is a simple yet powerful command-line application designed to help you manage your tasks directly 
+from your terminal. Built entirely in Python, the project uses only built-in modules (`json`, `sys`, and `datetime`),
+ensuring a lightweight solution with no external dependencies.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -36,11 +38,67 @@ No additional packages are required since only built-in modules are used.
 ### Steps to Install
 1. **Clone the Repository:**
    ``` bash
-   git clone https://github.com/yourusername/cli-task-tracker.git
+   git clone https://github.com/MXD-K1/cli-task-tracker.git
    cd cli-task-tracker
    ```
+2. **Run it on your terminal:**
+    ``` bash
+    python task-tarcker-cli.py # your commands go here
+    ```
+
 ## Usage
-none
+Here is a list of the available commands:
+   1. **Adding a Task:**
+      - To add a new task, simply use:
+      ``` bash
+      python cli_task_tracker.py add "Buy groceries"
+      ```
+      Output: `Successfully added Buy groceries (ID: 3)`
+      
+      - To add a description to an existing task:
+      ``` bash
+      python cli_task_tracker.py add 3 -d "Buy groceries and cook diner"
+      ```
+      
+      - To add a description to a new task:
+      ``` bash
+      python cli_task_tracker.py add "Buy groceries" -d "Buy groceries and cook diner
+      ```
+   
+   2. **Updating a Task:**
+      - To add a new task, simply use:
+      ``` bash
+      python cli_task_tracker.py update 1 "Buy groceries and cook diner"
+      ```
+      
+   3. **Deleting a Task:**
+       
+      Remove a task using its ID:
+      ``` bash
+      python cli_task_tracker.py delete 1
+      ```
+   4. **Listing Tasks:**
+      - View all tasks:
+      ``` bash
+      python cli_task_tracker.py list
+      ```
+      - Filter tasks by status:
+      ``` bash
+      python cli_task_tracker.py list todo
+      python cli_task_tracker.py list in-progress
+      python cli_task_tracker.py list done
+      ```  
+   5. **Marking Tasks (Changing Task Status):**
+      - Mark a task as in-progress:
+      ``` bash
+      python cli_task_tracker.py mark-in-progress 1
+      ```
+      - Mark a task as either `todo`, `in-progress`, or `done`:
+      ``` bash
+      python cli_task_tracker.py mark 1 done
+      python cli_task_tracker.py mark 1 todo
+      python cli_task_tracker.py mark 1 in-progress
+      ```
 
 ## Task Data Structure
 Each task is stored in a JSON file with the following properties:
@@ -79,31 +137,30 @@ Thank you for considering contributing to **CLI Task Tracker**! Your contributio
    ``` bash
    git checkout -b feature/your-feature-name
    ```
-
-   When making your changes:
+4. **Make Your Changes:**
    - Ensure your code follows the project’s style.
    - Write clear, concise commit messages.
    - Update documentation **if** needed.
 
-4. **Commit Your Changes**:
+5. **Commit Your Changes:**
+   ``` bash
+   git commit -am "Add [feature/bug fix]: Brief description of changes"
+   ``` 
+6. **Push Your Branch:**
+   
+   ``` bash
+   git push origin feature/your-feature-name
+   ```
+7. **Open a Pull Request (PR):**
+   - Navigate to the original repository on GitHub.
+   - Open a new PR and describe your changes in detail.
+   - Link to any related issues and explain why your contribution is valuable.
 
-``` bash
-git commit -am "Add [feature/bug fix]: Brief description of changes"
-``` 
-Push Your Branch:
+### Code Style and Standards
 
-bash
-git push origin feature/your-feature-name
-Open a Pull Request (PR):
-
-Navigate to the original repository on GitHub.
-
-Open a new PR and describe your changes in detail.
-
-Link to any related issues and explain why your contribution is valuable.
-
-Code Style and Standards
-
+   - Follow the established code style for the project.
+   - Test your changes thoroughly before submitting a PR.
+   - Keep commits focused and descriptive.
 
 ## License
 This project is licensed under the **MIT License** – a permissive open-source license that allows users to freely use,
